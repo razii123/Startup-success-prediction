@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prosperity Prognosticator</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+
+    <style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #ffffff !important;
+    }
+
+    /* FORCE ALL HEADINGS WHITE */
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff !important;
+    }
+
+    /* FORCE LABELS WHITE */
+    label {
+        font-weight: 500;
+        color: #ffffff !important;
+    }
+
+    /* FIX NAVBAR CENTER */
+    .navbar {
+        background-color: #111827;
+        padding: 15px 0;
+    }
+
+    .navbar .container {
+        justify-content: center;
+    }
+
+    .navbar-brand {
+        font-weight: 600;
+        font-size: 20px;
+        color: #ffffff !important;
+        margin: auto;
+    }
+
+    .hero-section {
+        padding: 60px 0;
+        text-align: center;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .hero-section h1 {
+        font-weight: 700;
+        font-size: 36px;
+        color: #ffffff !important;
+    }
+
+    .card {
+        background-color: #1e293b;
+        border-radius: 16px;
+        border: none;
+        animation: slideUp 1s ease-in-out;
+    }
+
+    .form-control, .form-select {
+        background-color: #334155;
+        color: #ffffff !important;
+        border: 1px solid #475569;
+    }
+
+    .form-control::placeholder {
+        color: #cbd5e1;
+    }
+
+    .form-control:focus, .form-select:focus {
+        background-color: #334155;
+        color: #ffffff !important;
+        border-color: #3b82f6;
+        box-shadow: none;
+    }
+
+    .section-title {
+        border-bottom: 2px solid #3b82f6;
+        padding-bottom: 5px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #ffffff !important;
+    }
+
+    .btn-primary-custom {
+        background-color: #3b82f6;
+        border: none;
+        font-weight: 600;
+        padding: 10px 30px;
+    }
+
+    .btn-primary-custom:hover {
+        background-color: #2563eb;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    @keyframes slideUp {
+        from {transform: translateY(40px); opacity: 0;}
+        to {transform: translateY(0); opacity: 1;}
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">Prosperity Prognosticator</a>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero-section" data-aos="fade-up">
+    <div class="container">
+        <h1>Predict Startup Success with Machine Learning</h1>
+        <p class="text-light mt-3">Data-driven insights for smarter entrepreneurial decisions.</p>
+    </div>
+</div>
+
+<!-- FORM SECTION -->
+<div class="container mb-5">
+<div class="card p-5 shadow-lg" data-aos="zoom-in">
+
+
+<form action="/predict" method="post">
+
+<h4 class="section-title">Funding Information</h4>
+<div class="row">
+    <div class="col-md-6">
+        <label>Total Funding (USD)</label>
+        <input type="number" name="funding_total_usd" class="form-control" required>
+    </div>
+    <div class="col-md-6">
+        <label>Funding Rounds</label>
+        <input type="number" name="funding_rounds" class="form-control" required>
+    </div>
+</div>
+
+<h4 class="section-title">Network</h4>
+<div class="row">
+    <div class="col-md-6">
+        <label>Relationships</label>
+        <input type="number" name="relationships" class="form-control" required>
+    </div>
+    <div class="col-md-6">
+        <label>Average Participants</label>
+        <input type="number" name="avg_participants" class="form-control" required>
+    </div>
+</div>
+
+<h4 class="section-title">Milestones</h4>
+<div class="row">
+    <div class="col-md-6">
+        <label>Milestones Achieved</label>
+        <input type="number" name="milestones" class="form-control" required>
+    </div>
+    <div class="col-md-6">
+        <label>Age at First Funding</label>
+        <input type="number" name="age_first_funding_year" class="form-control" required>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <label>Age at Last Funding</label>
+        <input type="number" name="age_last_funding_year" class="form-control" required>
+    </div>
+    <div class="col-md-6">
+        <label>Age at Last Milestone</label>
+        <input type="number" name="age_last_milestone_year" class="form-control" required>
+    </div>
+</div>
+
+<h4 class="section-title">Location</h4>
+<select name="location" class="form-select mb-3" required>
+    <option value="CA">California</option>
+    <option value="NY">New York</option>
+    <option value="MA">Massachusetts</option>
+    <option value="TX">Texas</option>
+    <option value="OTHER">Other State</option>
+</select>
+
+<h4 class="section-title">Investment</h4>
+<select name="has_VC" class="form-select mb-3">
+    <option value="1">Has VC Funding</option>
+    <option value="0">No VC Funding</option>
+</select>
+
+<select name="has_angel" class="form-select mb-3">
+    <option value="1">Has Angel Investment</option>
+    <option value="0">No Angel Investment</option>
+</select>
+
+<select name="is_top500" class="form-select mb-4">
+    <option value="1">Top 500 Startup</option>
+    <option value="0">Not Top 500</option>
+</select>
+
+<div class="text-center">
+<button type="submit" class="btn btn-primary-custom btn-lg">Predict Success</button>
+</div>
+
+</form>
+</div>
+</div>
+
+<script>
+document.querySelector("form").addEventListener("submit", function() {
+    let loader = document.createElement("div");
+    loader.innerHTML = `
+    <div style="
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:#0f172a;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        color:white;
+        font-size:24px;
+        z-index:9999;">
+        🚀 Analyzing Startup Data...
+    </div>`;
+    document.body.appendChild(loader);
+});
+
+// Initialize AOS properly
+AOS.init({
+    duration: 1000,
+    once: true
+});
+</script>
+
+
+</body>
+</html>
